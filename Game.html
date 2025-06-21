@@ -1,0 +1,51 @@
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Dan Stephens</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="BMX.html">BMX</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Resume.html">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Professional.html">Professional</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Content -->
+    <div class="container" style="text-align: center; margin-top: 3rem;">
+        <h1>🎲 Number Guessing Game</h1>
+        <p>Guess a number between 1 and 10</p>
+        <input type="number" id="guess" min="1" max="10">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const secretNumber = Math.floor(Math.random() * 10) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById("guess").value);
+            attempts++;
+
+            if (userGuess === secretNumber) {
+                document.getElementById("message").textContent = `🎉 Correct! You guessed it in ${attempts} tries.`;
+            } else if (userGuess < secretNumber) {
+                document.getElementById("message").textContent = "📉 Too low. Try again!";
+            } else {
+                document.getElementById("message").textContent = "📈 Too high. Try again!";
+            }
+        }
+    </script>
+
+    <!-- Bootstrap JS (required for navbar toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
